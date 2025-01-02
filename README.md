@@ -1,70 +1,129 @@
-# Getting Started with Create React App
+# React Calendar App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+The React Calendar App is a dynamic and user-friendly tool designed to manage and track communications with multiple companies. The app has two main modules: the User Dashboard and the Admin Dashboard.
 
-## Available Scripts
+### Key Features
+- **User Dashboard:**
+  - Notifications and Calendar icons to display relevant details when clicked.
+  - Log new communications with specific companies.
+  - View a table of companies, their last five communications, and the next scheduled communication.
+  - Color-coded highlights for overdue (red) and due-today (yellow) communications.
+  - Hover tooltips to display notes for past communications.
+  - Calendar view to manage past and upcoming communications.
+- **Admin Dashboard:**
+  - Add new companies to the database.
+  - Edit existing company details, including past communications and future schedules.
 
-In the project directory, you can run:
+## Setup Instructions
 
-### `npm start`
+### Prerequisites
+Make sure you have the following installed on your system:
+- [Node.js](https://nodejs.org/) (v14 or later)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- A code editor like [Visual Studio Code](https://code.visualstudio.com/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd react-calendar-app
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Running the Application
+1. Start the development server:
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
+2. Open your browser and navigate to:
+   ```
+   http://localhost:3000
+   ```
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Build for Production
+To create an optimized production build:
+```bash
+npm run build
+# or
+yarn build
+```
 
 ### Deployment
+1. Upload the contents of the `build` folder to your hosting platform.
+2. For GitHub Pages deployment, follow these steps:
+   - Install the `gh-pages` package:
+     ```bash
+     npm install gh-pages --save-dev
+     ```
+   - Add the following scripts to your `package.json`:
+     ```json
+     "homepage": "http://<your-github-username>.github.io/<repository-name>",
+     "scripts": {
+       "predeploy": "npm run build",
+       "deploy": "gh-pages -d build"
+     }
+     ```
+   - Deploy the app:
+     ```bash
+     npm run deploy
+     ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Application Functionality
 
-### `npm run build` fails to minify
+### User Dashboard
+- **Notifications:** Displays overdue and due-today communications.
+- **Calendar View:** Manage past and upcoming communications.
+- **Log Communication:** Add a new communication entry for one or multiple companies, specifying type, date, and notes.
+- **Table View:** Displays company details, recent communications, and upcoming schedules with interactive features like hover tooltips and highlight toggling.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Admin Dashboard
+- **Add New Companies:** Admins can add new companies, specifying their details and schedules.
+- **Edit Companies:** Admins can update information for existing companies, including past communications and future schedules.
+
+## Known Limitations
+- The app currently does not support user authentication or role-based access control.
+- No backend integration; data is stored in-memory and resets on page refresh.
+
+## Technologies Used
+- **Frontend:** React.js
+- **Styling:** Tailwind CSS
+- **Icons:** FontAwesome
+- **Tooltips:** React Tooltip
+
+## Folder Structure
+```plaintext
+src
+├── components
+│   ├── Admin
+│   │   ├── AddCompanyForm.js
+│   │   ├── EditCompanyForm.js
+│   ├── User
+│   │   ├── Notifications.js
+│   │   ├── CommunicationActionModal.js
+│   │   ├── CalendarView.js
+├── pages
+│   ├── AdminDashboard.js
+│   ├── UserDashboard.js
+├── App.js
+├── index.js
+```
+
+## Contributing
+Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+This project is licensed under the MIT License.
+
+## Live Demo
+[React Calendar App](https://react-calendar-app-krishna.netlify.app)
